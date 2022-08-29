@@ -66,7 +66,8 @@ export default function CreateRecipes(){
             imagen:"",
             diet:[]
            })
-         history("/home")
+         history.push("/home")
+         reload()
         }
        
 
@@ -142,7 +143,7 @@ export default function CreateRecipes(){
                        <select onChange={e=>select(e)} >
                        {diets?.map(e=>{
                              return(
-                                <option value={e.diet}>{e.diet}</option>
+                                <option key={e.id} value={e.diet}>{e.diet}</option>
 
                              )
                         })}
@@ -151,7 +152,11 @@ export default function CreateRecipes(){
                         <p>{errors.diet}</p>
                     )}
                 </div>
-                
+                <button type="submit" className="crearreceta" >
+                    
+                    Crear receta
+               
+                   </button>
                 
             </form>
             
@@ -166,11 +171,7 @@ export default function CreateRecipes(){
                              )}
                         </li>
                     </ul>
-                    <button  type="submit" className="crearreceta" >
                     
-                    Crear receta
-               
-                  </button>
         </div>
         
     )

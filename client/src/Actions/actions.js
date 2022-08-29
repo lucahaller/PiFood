@@ -15,7 +15,7 @@ export const RELOAD_DETAILS = "RELOAD_DETAILS"
 export function getrecetas() {
     return async function(dispatch) {
     
-      var json = await axios.get("http://localhost:3001/recipes",{});
+      var json = await axios.get("/recipes",{});
       
       return dispatch({
         type: GET_RECETAS,
@@ -35,7 +35,7 @@ export function getrecetas() {
 export function getdiets(){
   return async function(dispatch) {
     
-    var info = await axios.get("http://localhost:3001/diets",{});
+    var info = await axios.get("/diets",{});
     
     return dispatch({
       type: GET_DIETS,
@@ -46,7 +46,7 @@ export function getdiets(){
 }
 export function postrecipes(payload){
   return async function(dispatch){
-    var post = await axios.post("http://localhost:3001/recipes",payload)
+    var post = await axios.post("/recipes",payload)
     return dispatch({
       type: POST_RECETAS,
       payload : post.data
@@ -71,7 +71,7 @@ export function ordenamientofilt(payload){
  export function getrecetasName(name) {
   return async function(dispatch) {
     try {
-      var json = await axios.get("http://localhost:3001/recipes?name=" + name);
+      var json = await axios.get("/recipes?name=" + name);
       return dispatch({
         type: GET_NAME_RECIPES,
         payload:json.data
@@ -88,7 +88,7 @@ export function ordenamientofilt(payload){
 export function getdetailid(id){
   return async function(dispatch) {
     try {
-      var json = await axios.get(`http://localhost:3001/recipes/${id}`);
+      var json = await axios.get(`/recipes/${id}`);
       return dispatch({
         type: GET_DETAILS,
         payload:json.data

@@ -30,8 +30,8 @@ export default function Home() {
   };
 
   useEffect(() => {
-    dispatch(getrecetas());
-    dispatch(reloaddetail([]))
+     if(!recipes.length){dispatch(getrecetas())}
+    dispatch(reloaddetail([]));
   }, [dispatch]);
 
   function filterdietas(e) {
@@ -115,21 +115,16 @@ export default function Home() {
             </select>
           </div>
           <div className="searchbut">
-        
-              <button onClick={(e) => recargarrecipes(e)} className="button4">
-                Recargar recetas
-              </button>
-            
-            
-              
-            
+            <button onClick={(e) => recargarrecipes(e)} className="button4">
+              Recargar recetas
+            </button>
 
             <div className="search">
-              <SearchBar />
+              <SearchBar setnumberPage = {setnumberPage}/>
             </div>
             <Link to={"/recipes"}>
-                <button className="button4">Crea Tu Receta!</button>
-              </Link>
+              <button className="button4">Crea Tu Receta!</button>
+            </Link>
           </div>
         </div>
         <div>
