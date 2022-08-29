@@ -1,0 +1,49 @@
+.body{
+   height: 100%vh;
+   min-height: 100vh;
+   display: flex;
+   background: url('https://static.abc.es/media/gurmemalaga/2018/09/libros-de-cocina-malague%C3%B1a.jpeg');
+}
+
+
+.button3 {
+   padding: 0.8em 1.8em;
+   border: 2px solid #17C3B2;
+   position: relative;
+   overflow: hidden;
+   background-color: transparent;
+   text-align: center;
+   text-transform: uppercase;
+   font-size: 16px;
+   transition: .3s;
+   z-index: 1;
+   font-family: inherit;
+   color: #17C3B2;
+  }
+  
+  .button3::before {
+   content: '';
+   width: 0;
+   height: 300%;
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%) rotate(45deg);
+   background: #17C3B2;
+   transition: .5s ease;
+   display: block;
+   z-index: -1;
+  }
+  
+  .button3:hover::before {
+   width: 105%;
+  }
+  
+  .button3:hover {
+   color: #111;
+  }
+.titulo{
+   display: flex;
+
+   left: 500px
+}
