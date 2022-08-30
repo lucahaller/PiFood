@@ -7,7 +7,6 @@ import {
   filterdiets,
   ordenamientofilt,
   ordenaAZZA,
-  
 } from "../Actions/actions";
 import { Link } from "react-router-dom";
 import Cards from "./Cards";
@@ -30,8 +29,9 @@ export default function Home() {
   };
 
   useEffect(() => {
-     if(!recipes.length){dispatch(getrecetas())}
-    ;
+    if (!recipes.length) {
+      dispatch(getrecetas());
+    }
   }, [dispatch]);
 
   function filterdietas(e) {
@@ -41,7 +41,7 @@ export default function Home() {
   function ordenamiento(e) {
     e.preventDefault();
     dispatch(ordenamientofilt(e.target.value));
-    
+
     setnumberPage(1);
     setOrden(`Ordenamiento ${e.target.value}`);
   }
@@ -52,7 +52,7 @@ export default function Home() {
     setOrden(`Ordenamiento de ${e.target.value}`);
   }
   function recargarrecipes(e) {
-   e.preventDefault(e)
+    e.preventDefault(e);
     dispatch(getrecetas());
     setnumberPage(1);
   }
@@ -60,7 +60,7 @@ export default function Home() {
   return (
     <div className="one">
       <body className="conteiner">
-        <h1 className="title">Encuentra Tu Receta!</h1>
+        <h1 className="title">Find your recipe!</h1>
 
         <div className="filtersybuttons">
           <div className="filters">
@@ -109,24 +109,23 @@ export default function Home() {
             </select>
             <select onChange={(e) => ordenamiento(e)} className="button4">
               <option value="more" className="option">
-                Con Mas Healthscore
+                With More Helthscore
               </option>
               <option value="low" className="option">
-                Con Menos Healthscore
+                With Low Helthscore
               </option>
             </select>
           </div>
           <div className="searchbut">
             <button onClick={(e) => recargarrecipes(e)} className="button4">
-              Recargar recetas
+              Reload recipes
             </button>
 
-
             <Link to={"/recipes"}>
-              <button className="elchicoespecial">Crea Tu Receta!</button>
+              <button className="elchicoespecial">Create your recipe!</button>
             </Link>
             <div className="search">
-              <SearchBar setnumberPage = {setnumberPage}/>
+              <SearchBar setnumberPage={setnumberPage} />
             </div>
           </div>
         </div>
@@ -139,18 +138,28 @@ export default function Home() {
         </div>
 
         <div className="frags">
-          {currentrecipes.length > 0?currentrecipes?.map((e) => {
-            return (
-              <Fragment>
-                <Cards
-                  title={e.title}
-                  diets={e.diet ? e.diet : e.typediets.map((d) => d.diet)}
-                  imagen={e.imagen ? e.imagen : e.imagen}
-                  id={e.id}
-                />
-              </Fragment>
-            );
-          }):<div className="divloading"><img src = "https://i.gifer.com/origin/ea/eaab2ae945b4ddb2457f1a350cae03cc.gif" alt = "img not found" className="loading"/></div>}
+          {currentrecipes.length > 0 ? (
+            currentrecipes?.map((e) => {
+              return (
+                <Fragment>
+                  <Cards
+                    title={e.title}
+                    diets={e.diet ? e.diet : e.typediets.map((d) => d.diet)}
+                    imagen={e.imagen ? e.imagen : e.imagen}
+                    id={e.id}
+                  />
+                </Fragment>
+              );
+            })
+          ) : (
+            <div className="divloading">
+              <img
+                src="https://i.gifer.com/origin/ea/eaab2ae945b4ddb2457f1a350cae03cc.gif"
+                alt="img not found"
+                className="loading"
+              />
+            </div>
+          )}
         </div>
       </body>
     </div>

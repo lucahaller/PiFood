@@ -53,7 +53,6 @@ export default function CreateRecipes() {
       errors.resumen_plato ||
       errors.health_score ||
       errors.steps ||
-      errors.diet ||
       errors.imagen ||
       input.title === "" ||
       input.health_score === "" ||
@@ -110,21 +109,19 @@ export default function CreateRecipes() {
     }
     return errors;
   }
-
+  console.log(input);
   return (
     <div className="CreateBody">
-      
-     
       <form onSubmit={(e) => post(e)} className="formulario">
         <div className="crearyvolver">
-        <Link to="/home">
-        <button className="volverhome">Volver</button>
-      </Link>
-      <button type="submit" className="crearreceta">
-          Crear receta
-         </button>
+          <Link to="/home">
+            <button className="volverhome">Back</button>
+          </Link>
+          <button type="submit" className="crearreceta">
+            Create recipe
+          </button>
         </div>
-         
+
         <div>
           <label className="titlecreate">Title</label>
           <input
@@ -145,7 +142,9 @@ export default function CreateRecipes() {
             onChange={(e) => handlechangue(e)}
             className="inputsummary"
           />
-          {errors.resumen_plato && <p className="error">{errors.resumen_plato}</p>}
+          {errors.resumen_plato && (
+            <p className="error">{errors.resumen_plato}</p>
+          )}
         </div>
         <div>
           <label className="titlecreate">Healthscore</label>
@@ -157,7 +156,9 @@ export default function CreateRecipes() {
             placeholder="70"
             className="inputfor"
           />
-          {errors.health_score && <p className="error">{errors.health_score}</p>}
+          {errors.health_score && (
+            <p className="error">{errors.health_score}</p>
+          )}
         </div>
         <div>
           <label className="titlecreate">Steps</label>
@@ -171,7 +172,7 @@ export default function CreateRecipes() {
           {errors.steps && <p className="error">{errors.steps}</p>}
         </div>
         <div>
-          <label className="titlecreate">Imagen</label>
+          <label className="titlecreate">Image</label>
           <input
             type="text"
             value={input.imagen}
@@ -195,18 +196,17 @@ export default function CreateRecipes() {
           </select>
         </div>
         <ul className="uldiet">
-        <li className="dietaselec">
-          {input.diet.map((e) => (
-            <div >
-              
-              <button onClick={() => deletediet(e)} className="pd">{e}</button>
-            </div>
-          ))}
-        </li>
-      </ul>
+          <li className="dietaselec">
+            {input.diet.map((e) => {
+              return (
+                <button key={e} onClick={() => deletediet(e)} className="pd">
+                  {e}
+                </button>
+              );
+            })}
+          </li>
+        </ul>
       </form>
-
-      
     </div>
   );
 }
