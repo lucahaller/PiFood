@@ -10,6 +10,7 @@ export const GET_NAME_RECIPES = "GET_NAME_RECIPES"
 export const POST_RECETAS = "POST_RECETAS"
 export const GET_DETAILS ="GET_DETAILS"
 export const RELOAD_DETAILS = "RELOAD_DETAILS"
+export const ERROR = "ERROR"
 
 
 export function getrecetas() {
@@ -78,7 +79,7 @@ export function ordenamientofilt(payload){
   
       })
     } catch (error) {
-      console.log(error)
+     alert("Recipe doesn't exist")
     }
     
     

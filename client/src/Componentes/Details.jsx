@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { getdetailid } from "../Actions/actions";
+import { getdetailid ,reloaddetail} from "../Actions/actions";
 import { Link } from "react-router-dom";
 import "./Details.css";
 
@@ -12,10 +12,12 @@ export default function Details(props) {
 
   useEffect(() => {
     dispatch(getdetailid(id));
+    dispatch(reloaddetail([]))
   }, [dispatch, id]);
   console.log(recipes);
   return (
-    <div className="back">
+    <div className="back"> 
+       {recipes.length === 0 ? <div className="divloading"><img src = "https://i.gifer.com/origin/ea/eaab2ae945b4ddb2457f1a350cae03cc.gif" alt = "img not found" className="loading"/></div>:(
       <div className="conten">
         <div>
           <Link to="/home">
@@ -75,6 +77,7 @@ export default function Details(props) {
           )}
         </ul>
       </div>
+             )}
     </div>
   );
 }

@@ -7,6 +7,7 @@ const initialState={
     allrecipes: [],
     typediet :[],
     getdetails : [],
+    error : false,
 
 }
 
@@ -28,20 +29,24 @@ export default function rootReducer (state = initialState,action){
         case FILTER_DIETS:
                
                 const allrecipes = state.allrecipes
-                function fordiets(){
-                    let newArray = [];
-                    for(let key in allrecipes) {
-                        allrecipes[key].diet.map(e => {
-                            if(e === action.payload){
-                                newArray.push(allrecipes[key]);
+                function dietas(){
+                    let prueba1 =[]
+                    for (const key in allrecipes) {
+                        allrecipes[key].diet?.map(e => {
+                            if(e === action.payload) {
+                                prueba1.push(allrecipes[key])
                             }
                         })
+                        allrecipes[key].typediets?.map(d=>{
+                            if(d.diet === action.payload)
+                            prueba1.push(allrecipes[key])
+                        })
+                    } 
+                    return prueba1
                     }
-                    return newArray;
-                }
-                console.log(allrecipes)
-                const filtrado = action.payload === "All Diets"? allrecipes:fordiets()  
-                
+                console.log(dietas())
+                const filtrado = action.payload === "All Diets" ? allrecipes : dietas()
+          
     
                 return({
                     ...state,

@@ -16,9 +16,13 @@
     align-items: center
 }
 .filters{
-   display: flex;
-   gap: 100px;
-   
+    display: flex;
+    flex-direction: row;
+    height: 70px;
+    grid-gap: 100px;
+    gap: 50px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
 
 }
 .title{
@@ -26,21 +30,26 @@
     grid-area: "Titulo";
     font-size:xx-large;
     font-style: oblique;
+    color: wheat;
+    
     
 }
 .button4 {
     padding: 0.8em 1.8em;
-    border: 2px solid #17C3B2;
+    margin-bottom: 20px;
+   
+    border: 2px solid #04201d;
+    border-radius: 40px;
     position: relative;
     overflow: hidden;
-    background-color: transparent;
+    background-color: wheat ;
     text-align: center;
     text-transform: uppercase;
     font-size: 16px;
     transition: .3s;
     z-index: 1;
     font-family: inherit;
-    color: #17C3B2;
+    color: #000000;
    }
    
    .button4::before {
@@ -48,7 +57,7 @@
     width: 0;
     height: 300%;
     position: absolute;
-    top: 50%;
+    top: 10%;
     left: 50%;
     transform: translate(-50%, -50%) rotate(45deg);
     background: #17C3B2;
@@ -66,19 +75,58 @@
    }
 
 .filtersybuttons{
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-template-rows: auto auto;
-    gap: 40px;
+    display: flex;
+    flex-direction: row;
 }
 .option{
     text-align: center;
 }
 .searchbut{
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: row;
+    
 }
 .search{
-    margin-top: 10px;
+    margin-top: 5px;
     margin-bottom: 10px;
+}
+.elchicoespecial{
+    padding: 0.8em 1.8em;
+    background-color: wheat ;
+    border: 2px solid #070707;
+    border-radius: 40px;
+    position: relative;
+    overflow: hidden;
+    
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 16px;
+    transition: .3s;
+    z-index: 1;
+    font-family: inherit;
+    color: #050706;
+   }
+   
+   .elchicoespecial::before {
+    content: '';
+    width: 0;
+    height: 300%;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    background: #17C3B2;
+    transition: .5s ease;
+    display: block;
+    z-index: -1;
+   }
+   
+   .elchicoespecial:hover::before {
+    width: 105%;
+   }
+   
+   .elchicoespecial:hover {
+    color: #111;
+   
+
 }

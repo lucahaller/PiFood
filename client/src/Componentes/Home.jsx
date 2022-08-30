@@ -7,7 +7,7 @@ import {
   filterdiets,
   ordenamientofilt,
   ordenaAZZA,
-  reloaddetail,
+  
 } from "../Actions/actions";
 import { Link } from "react-router-dom";
 import Cards from "./Cards";
@@ -31,7 +31,7 @@ export default function Home() {
 
   useEffect(() => {
      if(!recipes.length){dispatch(getrecetas())}
-    dispatch(reloaddetail([]));
+    ;
   }, [dispatch]);
 
   function filterdietas(e) {
@@ -41,6 +41,7 @@ export default function Home() {
   function ordenamiento(e) {
     e.preventDefault();
     dispatch(ordenamientofilt(e.target.value));
+    
     setnumberPage(1);
     setOrden(`Ordenamiento ${e.target.value}`);
   }
@@ -51,6 +52,7 @@ export default function Home() {
     setOrden(`Ordenamiento de ${e.target.value}`);
   }
   function recargarrecipes(e) {
+   e.preventDefault(e)
     dispatch(getrecetas());
     setnumberPage(1);
   }
@@ -97,7 +99,7 @@ export default function Home() {
                 Fodmap friendly
               </option>
             </select>
-            <select onChange={(e) => ordenDEAZZA(e)} className="button">
+            <select onChange={(e) => ordenDEAZZA(e)} className="button4">
               <option value="AZ" className="option">
                 A - Z
               </option>
@@ -119,12 +121,13 @@ export default function Home() {
               Recargar recetas
             </button>
 
+
+            <Link to={"/recipes"}>
+              <button className="elchicoespecial">Crea Tu Receta!</button>
+            </Link>
             <div className="search">
               <SearchBar setnumberPage = {setnumberPage}/>
             </div>
-            <Link to={"/recipes"}>
-              <button className="button4">Crea Tu Receta!</button>
-            </Link>
           </div>
         </div>
         <div>
@@ -136,7 +139,7 @@ export default function Home() {
         </div>
 
         <div className="frags">
-          {currentrecipes?.map((e) => {
+          {currentrecipes.length > 0?currentrecipes?.map((e) => {
             return (
               <Fragment>
                 <Cards
@@ -147,7 +150,7 @@ export default function Home() {
                 />
               </Fragment>
             );
-          })}
+          }):<div className="divloading"><img src = "https://i.gifer.com/origin/ea/eaab2ae945b4ddb2457f1a350cae03cc.gif" alt = "img not found" className="loading"/></div>}
         </div>
       </body>
     </div>

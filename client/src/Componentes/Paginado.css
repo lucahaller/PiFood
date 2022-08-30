@@ -17,14 +17,14 @@
 }
 /* From uiverse.io by @mrhyddenn */
 .scrolldown {
-    --color: white;
+    background-color: wheat ;
     --sizeX: 30px;
     --sizeY: 50px;
     position: relative;
     width: var(--sizeX);
     height: var(--sizeY);
     margin-left: var(sizeX / 2);
-    border: calc(var(--sizeX) / 10) solid var(--color);
+    border: 2px solid #070707;
     border-radius: 50px;
     box-sizing: border-box;
     margin-bottom: 16px;
