@@ -22,13 +22,7 @@ router.get('/',async (req,res)=>{
         
     })
     
-    // dieteach.forEach(el => {
-    //     Typediet.findOrCreate({
-    //         where:{
-    //             diet:el
-    //         }
-    //     })
-    // });
+    
    const alldiets = await Typediet.findAll()
    res.status(200).send(alldiets)
 

@@ -6,18 +6,16 @@ import "./SearchBar.css";
 export default function SearchBar({ setnumberPage }) {
   const dispatch = useDispatch();
   const [name, setName] = useState("");
-  const error = useSelector((state) => state.error);
+ 
 
   function inputname(e) {
     e.preventDefault();
     setName(e.target.value);
-    console.log(name);
+    
   }
   function submitName(e) {
     e.preventDefault();
-    if (error === true) {
-      alert("Receta no encontrada");
-    }
+    
     dispatch(getrecetasName(name));
     setnumberPage(1);
     setName("");

@@ -16,7 +16,7 @@ const initialState = {
   allrecipes: [],
   typediet: [],
   getdetails: [],
-  error: false,
+  
 };
 
 export default function rootReducer(state = initialState, action) {
@@ -27,9 +27,7 @@ export default function rootReducer(state = initialState, action) {
         recipes: action.payload,
         allrecipes: action.payload,
       };
-    case ERROR: {
-      return;
-    }
+    
 
     case GET_DIETS:
       return {
@@ -81,7 +79,7 @@ export default function rootReducer(state = initialState, action) {
               return 0;
             });
 
-      console.log(ordenado);
+     
       return {
         ...state,
         recipes: ordenado,

@@ -93,8 +93,8 @@ export default function CreateRecipes() {
     } else if (
       input.health_score < 0 ||
       input.health_score > 100 ||
-      !input.health_score ||
-      !/^[A-Z]+$/i.test(input.title)
+      !input.health_score 
+      
     ) {
       errors.health_score = "Declarar un valor entre 0 y 100";
     } else if (!input.steps) {
@@ -104,9 +104,7 @@ export default function CreateRecipes() {
       !input.imagen.match(/^(ftp|http|https):\/\/[^ "]+$/)
     ) {
       errors.imagen = "Inserte una Dirección de imágen";
-    } else if (input.diet.length === 0) {
-      errors.diet = "Especificar la dieta del plato";
-    }
+    } 
     return errors;
   }
   console.log(input);

@@ -9,7 +9,8 @@ router.get('/',async (req,res)=>{
    
     if(name){
         const filter = await allrecipes.filter(e=> e.title.toLowerCase().includes(name.toLowerCase()))
-        filter.length ? res.status(200).send(filter) : res.status(400).send('No se encontró dicha Receta')
+        
+        filter.length ? res.status(200).send(filter) : res.status(400).send('No se encontró la receta con dicho nombre')
     }else{
         res.status(200).send(allrecipes)
     }
