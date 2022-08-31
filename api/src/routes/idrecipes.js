@@ -13,7 +13,7 @@ router.get('/:id', async(req,res)=>{
         let filter = filterid[0]
         filterid.length?res.status(200).send(filter):res.status(404).send('No se encontró dicha receta')
     }else{
-        res.status(404).send('Falta especificar receta')
+        res.status(404).send('Error receta inexistente')
     }
 })
 

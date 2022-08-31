@@ -88,23 +88,26 @@ export default function CreateRecipes() {
     let errors = {};
     if (!/^[A-Z]+$/i.test(input.title)) {
       errors.title = "Insertar un titulo para la receta";
-    } else if (!input.resumen_plato) {
+    } else if(input.title.length > 20){
+      errors.title = "Inserte un titulo menor a 20 caracteres"
+    }else if (!input.resumen_plato) {
       errors.resumen_plato = "Redactar un resumen para la receta";
     } else if (
       input.health_score < 0 ||
       input.health_score > 100 ||
-      !input.health_score 
+      !input.health_score ||
+      (!/^[0-9]+$/.test(input.health_score))
       
     ) {
-      errors.health_score = "Declarar un valor entre 0 y 100";
+      errors.health_score = "Declarar un valor entero entre 0 y 100";
     } else if (!input.steps) {
       errors.steps = "Redactar los pasos a seguir!";
     } else if (
       !input.imagen.length > 0 ||
       !input.imagen.match(/^(ftp|http|https):\/\/[^ "]+$/)
-    ) {
+    ){
       errors.imagen = "Inserte una Dirección de imágen";
-    } 
+    }
     return errors;
   }
   console.log(input);
